@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>VanessaTube</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1">
+    <meta name="description" content="Darknet video streaming platform">
+    <meta name="keywords" content="darknet,video,streaming,porn,adult,xxx,sex,teens,boys,girls">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon_32x32.png" sizes="32x32">
+    
+    <style>:root {
+  --c1: #f00;
+  --c2: #191919;
+  --txt: #212121;
+  --scs: #007f1b;
+  --err: #c30027;
+  --brdr: #ccc;
+  --gr-lite-bg: #f2f2f2;
+  --gr-bg: #bbb;
+  --gr-brdr: #ddd;
+  --txt-gr: #686868;
+  --blck: #111;
+  --c1-x1: rgba(255, 0, 0, .2);
+}
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-1.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-2.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-3.woff2) format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-4.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-5.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-6.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-7.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-9.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-10.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-11.woff2) format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-12.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-13.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-14.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-15.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/css/font/notosans-16.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+body {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  background: var(--gr-lite-bg);
+  color: var(--txt);
+}
+
+a {
+  color: var(--c1);
+  text-decoration: none;
+}
+a:hover, a:active {
+  text-decoration: underline;
+}
+
+input[type="text"],input[type="password"] {
+  color: var(--txt);
+  border: 1px solid var(--brdr);
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  height: 32px;
+  background: #fff;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  outline: none;
+  padding: 0 8px;
+  margin: 0;
+}
+input[type="text"]:focus,input[type="password"]:focus {
+  border: 1px solid var(--c1);
+  outline: 4px solid var(--c1-x1);
+}
+input[type="text"]::placeholder,input[type="password"]::placeholder {
+  opacity: 1;
+  color: var(--txt-gr);
+}
+input[type="submit"],a.btn {
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background: var(--c1);
+  color: #fff;
+  border: none;
+  height: 32px;
+  padding: 0 12px;
+  margin: 0;
+  text-align: center;
+  outline: none;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+a.btn {
+  line-height: 20px;
+  padding: 4px 12px;
+}
+input[type="submit"]:hover,input[type="submit"]:focus,a.btn:hover,a.btn:focus {
+  background: var(--txt);
+}
+input[type="submit"]:focus,a.btn:focus {
+  outline: 4px solid var(--c1-x1);
+}
+a.btn:hover,a.btn:focus {
+  text-decoration: none;
+}
+a.btn * {
+  vertical-align: middle;
+}
+a.btn span.t {
+  display: inline-block;
+  margin-left: 3px;
+  line-height: 0;
+}
+a.btn.l {
+  background: var(--gr-brdr);
+  color: var(--txt);
+}
+a.btn.l:hover,a.btn.l:focus {
+  background: var(--txt);
+  color: #fff;
+}
+.b1 { margin-bottom: 10px; }
+
+.captcha {
+  border: 1px solid var(--brdr);
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+.captcha.f img {
+  width: 100%;
+}
+
+.flb {
+  margin-bottom: 5px;
+}
+.flb label {
+  display: inline;
+  color: var(--txt);
+  font-weight: bold;
+}
+
+.msgerr {
+  padding: 10px 15px;
+  background: var(--err);
+  color: #fff;
+  line-height: 19px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 18px;
+  color: var(--txt);
+  font-weight: bold;
+  font-family: 'Noto Sans', sans-serif;
+  padding: 0;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+#ua_cntr_blck {
+  width: 300px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid var(--gr-brdr);
+  margin: 44px auto;
+}
+#ua_cntr_blck h1 {
+  text-align: center;
+}
+@media (max-width: 350px) {
+  #ua_cntr_blck {
+    width: auto;
+    margin: 10px;
+  }
+}
+
+#logo {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+#logo a {
+  display: inline-block;
+}
+#abt {
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--txt-gr);
+  margin-bottom: 20px;
+}
+#ua_cntr_blck_fl {
+  text-align: center;
+  margin-top: 44px;
+  padding-top: 12px;
+  border-top: 1px solid var(--gr-brdr);
+  color: var(--txt-gr);
+}
+
+
+#ftr {
+  margin-top: 55px;
+  border-top: 1px solid var(--gr-brdr);
+  padding-top: 15px;
+  padding-bottom: 25px;
+  text-align: center;
+  color: var(--txt-gr);
+}
+.unauth_none {
+  display: none;
+}
+</style>
+  </head>
+  <body>
+    
+    <div id="cntr">
+      <div class="cc"></div>
+      <div id="page_index">
+  <div id="ua_cntr_blck">
+    <div id="logo">
+      <a href="/"><span style="display:inline-block;height:32px;a-weight:900;font-size:22px;"><span style="display:inline-block;height:32px;line-height:32px;color:#191919;">Dark</span><span style="display:inline-block;height:32px;line-height:32px;color:#fff;padding:0 10px;border-radius:8px;margin-left:2px;background:#f00;text-shadow:1px 1px rgba(0,0,0,.2);">Tube</span></span></a>
+    </div>
+    <div id="abt">Bem vindos a DarkTube Senhores Hackers video streaming platform!</div>
+    
+    <form method="post" action="/">
+      <input type="hidden" name="d" value="wFRclvQTd1Wccjt/AbKL3rpZCpum5CpCSJ1HBRo5TQrZXtVtcRzZLih0G/KlpUjkNluVc5yOnhF6uhI5AS4uqw==">
+      <input type="hidden" name="t" value="1733717912">
+      <div class="flb"><label>Username:</label></div>
+      <div class="b1">
+        <input type="text" name="u" value="" required="required" autocomplete="off">
+      </div>
+      <div class="flb"><label>Password:</label></div>
+      <div class="b1">
+        <input type="password" name="p" required="required">
+      </div>
+      <div class="b1 captcha f"><img src="data:image/jpeg;base64,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"></div>
+      <div class="flb"><label>Captcha:</label></div>
+      <div class="b1">
+        <input type="text" name="c" required="required" autocomplete="off">
+      </div>
+      <div>
+        <input type="submit" value="Sign In" style="width:100%;">
+      </div>
+      <div id="ua_cntr_blck_fl">
+        Don't have an account? <a href="/sign_up">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>
+    </div>
+    <div id="ftr">
+      <span class="unauth_none"><a href="/a/disclaimer">Disclamer</a> | </span><a href="/pgp.txt" target="_blank">PGP key</a> | <a href="/mirrors.txt" target="_blank">Mirrors</a><br/>
+      &copy; 2019 - 2024 DarkTube<br><a href="/x-videos" style="cursor: default; visibility: hidden;">.</a>
+    </div>
+  </body>
+</html>
