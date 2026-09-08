@@ -1,89 +1,102 @@
-<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>CONTATO INSIGNIFICANTE</title>
-    <link rel="stylesheet" href="css/style.css">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com/">
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-        <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&amp;display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="icon" href="https://png.pngtree.com/png-vector/20240723/ourmid/pngtree-sleeping-face-emoji-realistic-png-image_13220736.png" type="image/x-ricon">
-        <link rel="shortcut icon" href="https://png.pngtree.com/png-vector/20240723/ourmid/pngtree-sleeping-face-emoji-realistic-png-image_13220736.png" type="image/x-icon">
-
+    <title>Gerador e Leitor de QR Code Grátis Online</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bibliotecas Necessárias via CDN -->
+    <script src="https://cloudflare.com"></script>
+    <script src="https://jsdelivr.net"></script>
 </head>
-
 <body>
 
     <header>
-        <div class="header-container">
-        <img src="https://png.pngtree.com/png-vector/20240723/ourmid/pngtree-sleeping-face-emoji-realistic-png-image_13220736.png" id="logo">
-<body>
-
-    <header>
-        
-        <div class="header-social"></i>
-                </a>
-            </a>
-        </div>
-        </div>
-        
-        <nav>
-            <ul>
-                <li>
-            </ul>
-        </nav>
-
-<!-- IMAGEM GRANDE ABAIXO DO MENU -->
-
-<!-- GIF do Tenor incorporado -->
-<div class="tenor-gif-embed"
-     data-postid="8344007564889912048"
-     data-share-method="host"
-     data-aspect-ratio="1"
-     data-width="100%">
-  <a href="https://tenor.com/view/jagyasini-singh-good-night-ok-bye-ok-by-good-night-love-gif-8344007564889912048">Good Night Love GIF</a>
-</div>
-<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-
-
-
+        <h1>QR Code Hub - Gerador & Scanner</h1>
+        <p class="seo-notice">Sua ferramenta online 100% gratuita para criar e ler códigos QR sem complicações.</p>
     </header>
-        <section
-  </div>
-  </div>
-</section>
-        </div>
-    </section>
 
+    <main class="container">
+        <!-- SEÇÃO DO GERADOR -->
+        <section class="box box-generator">
+            <h2>1. Gerar QR Code</h2>
+            
+            <!-- Abas de Navegação -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="url">Link / URL</button>
+                <button class="tab-btn" data-tab="wifi">Wi-Fi</button>
+                <button class="tab-btn" data-tab="pix">PIX Copia e Cola</button>
+            </div>
 
+            <!-- Conteúdo das Abas -->
+            <div id="tab-url" class="tab-content active">
+                <label>Insira o Link ou Texto:</label>
+                <input type="text" id="input-url" placeholder="https://exemplo.com">
+            </div>
 
-    <footer
+            <div id="tab-wifi" class="tab-content">
+                <label>Nome da Rede (SSID):</label>
+                <input type="text" id="wifi-ssid" placeholder="Minha Rede Wi-Fi">
+                <label>Senha:</label>
+                <input type="password" id="wifi-pass" placeholder="Senha da Rede">
+                <label>Segurança:</label>
+                <select id="wifi-type">
+                    <option value="WPA">WPA/WPA2</option>
+                    <option value="WEP">WEP</option>
+                    <option value="nopass">Sem senha</option>
+                </select>
+            </div>
+
+            <div id="tab-pix" class="tab-content">
+                <label>Cole a linha do PIX Copia e Cola:</label>
+                <textarea id="input-pix" placeholder="Cole o código PIX completo aqui..."></textarea>
+            </div>
+
+            <!-- Customização de Cores -->
+            <div class="color-picker-container">
+                <div class="color-field">
+                    <label>Cor do QR:</label>
+                    <input type="color" id="color-dark" value="#000000">
+                </div>
+                <div class="color-field">
+                    <label>Cor do Fundo:</label>
+                    <input type="color" id="color-light" value="#ffffff">
                 </div>
             </div>
-        </div>
-<h3>CONTATO INSIGNIFICANTE</h3>
-        <div class="footer-info">
-            <div class="footer-endereco">
-        
+
+            <button class="main-btn" id="btn-generate">Gerar QR Code</button>
+
+            <!-- Área de Resultado -->
+            <div id="qrcode-display"></div>
+            
+            <div class="download-buttons" id="download-area" style="display: none;">
+                <button id="btn-download-png" class="download-btn png">Baixar PNG</button>
+                <button id="btn-download-svg" class="download-btn svg">Baixar SVG</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO LEITOR (SCANNER) -->
+        <section class="box box-reader">
+            <h2>2. Ler / Escanear QR Code</h2>
+            <p class="camera-warn">Nota: O scanner via câmera requer conexão segura HTTPS para funcionar no celular.</p>
+            
+            <div class="video-container">
+                <video id="webcam" playsinline autocomplete="off"></video>
+                <canvas id="hidden-canvas" style="display:none;"></canvas>
+                <div id="loading-message">Aguardando permissão/HTTPS...</div>
             </div>
 
-            <div class="footer-social">
-                </a>
-               Ivam:<a href="https://api.whatsapp.com/send?phone=+55 71 9246-7035"
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+            <div class="result-container">
+                <label>Resultado da Leitura:</label>
+                <div id="scan-result" class="result-box">Nenhum QR Code detectado ainda...</div>
             </div>
-             <div class="footer-social">
-                </a>
-               Kauan:<a href="https://api.whatsapp.com/send?phone=+55 71 9219-5153"
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-        </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 QR Code Hub. Código aberto e gratuito.</p>
     </footer>
 
-
-
-</body></html>
+    <script src="script.js"></script>
+</body>
+</html>
