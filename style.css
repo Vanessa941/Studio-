@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador e Leitor de QR Code Grátis Online</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bibliotecas Necessárias via CDN -->
+    <script src="https://cloudflare.com"></script>
+    <script src="https://jsdelivr.net"></script>
+</head>
+<body>
+
+    <header>
+        <h1>QR Code Hub - Gerador & Scanner</h1>
+        <p class="seo-notice">Sua ferramenta online 100% gratuita para criar e ler códigos QR sem complicações.</p>
+    </header>
+
+    <main class="container">
+        <!-- SEÇÃO DO GERADOR -->
+        <section class="box box-generator">
+            <h2>1. Gerar QR Code</h2>
+            
+            <!-- Abas de Navegação -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="url">Link / URL</button>
+                <button class="tab-btn" data-tab="wifi">Wi-Fi</button>
+                <button class="tab-btn" data-tab="pix">PIX Copia e Cola</button>
+            </div>
+
+            <!-- Conteúdo das Abas -->
+            <div id="tab-url" class="tab-content active">
+                <label>Insira o Link ou Texto:</label>
+                <input type="text" id="input-url" placeholder="https://exemplo.com">
+            </div>
+
+            <div id="tab-wifi" class="tab-content">
+                <label>Nome da Rede (SSID):</label>
+                <input type="text" id="wifi-ssid" placeholder="Minha Rede Wi-Fi">
+                <label>Senha:</label>
+                <input type="password" id="wifi-pass" placeholder="Senha da Rede">
+                <label>Segurança:</label>
+                <select id="wifi-type">
+                    <option value="WPA">WPA/WPA2</option>
+                    <option value="WEP">WEP</option>
+                    <option value="nopass">Sem senha</option>
+                </select>
+            </div>
+
+            <div id="tab-pix" class="tab-content">
+                <label>Cole a linha do PIX Copia e Cola:</label>
+                <textarea id="input-pix" placeholder="Cole o código PIX completo aqui..."></textarea>
+            </div>
+
+            <!-- Customização de Cores -->
+            <div class="color-picker-container">
+                <div class="color-field">
+                    <label>Cor do QR:</label>
+                    <input type="color" id="color-dark" value="#000000">
+                </div>
+                <div class="color-field">
+                    <label>Cor do Fundo:</label>
+                    <input type="color" id="color-light" value="#ffffff">
+                </div>
+            </div>
+
+            <button class="main-btn" id="btn-generate">Gerar QR Code</button>
+
+            <!-- Área de Resultado -->
+            <div id="qrcode-display"></div>
+            
+            <div class="download-buttons" id="download-area" style="display: none;">
+                <button id="btn-download-png" class="download-btn png">Baixar PNG</button>
+                <button id="btn-download-svg" class="download-btn svg">Baixar SVG</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO LEITOR (SCANNER) -->
+        <section class="box box-reader">
+            <h2>2. Ler / Escanear QR Code</h2>
+            <p class="camera-warn">Nota: O scanner via câmera requer conexão segura HTTPS para funcionar no celular.</p>
+            
+            <div class="video-container">
+                <video id="webcam" playsinline autocomplete="off"></video>
+                <canvas id="hidden-canvas" style="display:none;"></canvas>
+                <div id="loading-message">Aguardando permissão/HTTPS...</div>
+            </div>
+
+            <div class="result-container">
+                <label>Resultado da Leitura:</label>
+                <div id="scan-result" class="result-box">Nenhum QR Code detectado ainda...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 QR Code Hub. Código aberto e gratuito.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
