@@ -1,102 +1,238 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador e Leitor de QR Code Grátis Online</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Bibliotecas Necessárias via CDN -->
-    <script src="https://cloudflare.com"></script>
-    <script src="https://jsdelivr.net"></script>
-</head>
-<body>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    <header>
-        <h1>QR Code Hub - Gerador & Scanner</h1>
-        <p class="seo-notice">Sua ferramenta online 100% gratuita para criar e ler códigos QR sem complicações.</p>
-    </header>
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    padding: 20px;
+}
 
-    <main class="container">
-        <!-- SEÇÃO DO GERADOR -->
-        <section class="box box-generator">
-            <h2>1. Gerar QR Code</h2>
-            
-            <!-- Abas de Navegação -->
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="url">Link / URL</button>
-                <button class="tab-btn" data-tab="wifi">Wi-Fi</button>
-                <button class="tab-btn" data-tab="pix">PIX Copia e Cola</button>
-            </div>
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-            <!-- Conteúdo das Abas -->
-            <div id="tab-url" class="tab-content active">
-                <label>Insira o Link ou Texto:</label>
-                <input type="text" id="input-url" placeholder="https://exemplo.com">
-            </div>
+header h1 {
+    color: #1e293b;
+    margin-bottom: 5px;
+}
 
-            <div id="tab-wifi" class="tab-content">
-                <label>Nome da Rede (SSID):</label>
-                <input type="text" id="wifi-ssid" placeholder="Minha Rede Wi-Fi">
-                <label>Senha:</label>
-                <input type="password" id="wifi-pass" placeholder="Senha da Rede">
-                <label>Segurança:</label>
-                <select id="wifi-type">
-                    <option value="WPA">WPA/WPA2</option>
-                    <option value="WEP">WEP</option>
-                    <option value="nopass">Sem senha</option>
-                </select>
-            </div>
+.seo-notice {
+    color: #64748b;
+    font-size: 0.95rem;
+}
 
-            <div id="tab-pix" class="tab-content">
-                <label>Cole a linha do PIX Copia e Cola:</label>
-                <textarea id="input-pix" placeholder="Cole o código PIX completo aqui..."></textarea>
-            </div>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
 
-            <!-- Customização de Cores -->
-            <div class="color-picker-container">
-                <div class="color-field">
-                    <label>Cor do QR:</label>
-                    <input type="color" id="color-dark" value="#000000">
-                </div>
-                <div class="color-field">
-                    <label>Cor do Fundo:</label>
-                    <input type="color" id="color-light" value="#ffffff">
-                </div>
-            </div>
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
 
-            <button class="main-btn" id="btn-generate">Gerar QR Code</button>
+.box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
 
-            <!-- Área de Resultado -->
-            <div id="qrcode-display"></div>
-            
-            <div class="download-buttons" id="download-area" style="display: none;">
-                <button id="btn-download-png" class="download-btn png">Baixar PNG</button>
-                <button id="btn-download-svg" class="download-btn svg">Baixar SVG</button>
-            </div>
-        </section>
+h2 {
+    color: #0f172a;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+}
 
-        <!-- SEÇÃO DO LEITOR (SCANNER) -->
-        <section class="box box-reader">
-            <h2>2. Ler / Escanear QR Code</h2>
-            <p class="camera-warn">Nota: O scanner via câmera requer conexão segura HTTPS para funcionar no celular.</p>
-            
-            <div class="video-container">
-                <video id="webcam" playsinline autocomplete="off"></video>
-                <canvas id="hidden-canvas" style="display:none;"></canvas>
-                <div id="loading-message">Aguardando permissão/HTTPS...</div>
-            </div>
+label {
+    display: block;
+    font-weight: 600;
+    margin: 10px 0 5px;
+    font-size: 0.9rem;
+    color: #475569;
+}
 
-            <div class="result-container">
-                <label>Resultado da Leitura:</label>
-                <div id="scan-result" class="result-box">Nenhum QR Code detectado ainda...</div>
-            </div>
-        </section>
-    </main>
+input[type="text"], input[type="password"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
 
-    <footer>
-        <p>&copy; 2026 QR Code Hub. Código aberto e gratuito.</p>
-    </footer>
+input:focus, textarea:focus, select:focus {
+    border-color: #3b82f6;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    background: #e2e8f0;
+    color: #475569;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    background: #3b82f6;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.color-picker-container {
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.color-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input[type="color"] {
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.main-btn {
+    width: 100%;
+    padding: 12px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.main-btn:hover {
+    background: #059669;
+}
+
+#qrcode-display {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#qrcode-display img {
+    border: 2px solid #e2e8f0;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.download-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+
+.download-btn.png { background: #3b82f6; }
+.download-btn.svg { background: #6b7280; }
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #000;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+#webcam {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#loading-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+
+.result-container {
+    margin-top: 20px;
+}
+
+.result-box {
+    background: #f1f5f9;
+    padding: 15px;
+    border-left: 5px solid #3b82f6;
+    border-radius: 4px;
+    word-break: break-all;
+    font-family: monospace;
+}
+
+.camera-warn {
+    font-size: 0.8rem;
+    color: #b45309;
+    background: #fef3c7;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
